@@ -1,3 +1,5 @@
+[![Maintained by Nimbux911](https://img.shields.io/badge/maintained%20by-nimbux911.com-%235849a6.svg)](https://www.nimbux911.com/)
+
 # terraform-aws-ecs-fargate-service
 
 This module was created to create a fargate service cluster 
