@@ -76,3 +76,15 @@ variable "force_new_deployment" {
   description = "Enable to force a new task deployment of the service. "
   default     = true
 }
+
+variable "deployment_minimum_healthy_percent" {
+  type        = number
+  description = "Minimum healthy percent of containers at deploy time."
+  default     = 100
+}
+
+variable "deployment_maximum_percent" {
+  type        = number
+  description = "Maximum percent of containers at deploy time."
+  default     = 200
+}

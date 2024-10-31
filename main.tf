@@ -3,12 +3,14 @@ locals {
 }
 
 resource "aws_ecs_service" "main" {
-  name                 = lookup(var.fargate_services, "service_name", "app")
-  cluster              = var.cluster_id
-  task_definition      = lookup(var.fargate_services, "task_definition_arn")
-  desired_count        = lookup(var.fargate_services, "service_desired_count", 1)
-  launch_type          = "FARGATE"
-  force_new_deployment = var.force_new_deployment
+  name                               = lookup(var.fargate_services, "service_name", "app")
+  cluster                            = var.cluster_id
+  task_definition                    = lookup(var.fargate_services, "task_definition_arn")
+  desired_count                      = lookup(var.fargate_services, "service_desired_count", 1)
+  launch_type                        = "FARGATE"
+  force_new_deployment               = var.force_new_deployment
+  deployment_minimum_healthy_percent = var.deployment_minimum_healthy_percent
+  deployment_maximum_percent         = var.deployment_maximum_percent
 
   enable_execute_command = true
 
