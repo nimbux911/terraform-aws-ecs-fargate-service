@@ -58,6 +58,7 @@ module "ecs_service" {
 | container\_port | port of the task's container | number | - | yes |
 | task\_definition\_arn | Task definition arn | string | - | yes |
 | tags | A amount of tags added as a map | map | - | yes |
+| ignored_lifecycle_changes | List of resource attributes to ignore changes for lifecycle management. | list of strings | - | no |
 
 ## Outputs
 

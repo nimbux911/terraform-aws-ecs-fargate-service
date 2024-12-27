@@ -33,6 +33,14 @@ resource "aws_ecs_service" "main" {
       container_port   = load_balancer.value.container_port
     }
   }
+
+  dynamic "lifecycle" {
+    for_each = var.ignored_lifecycle_changes != [] ? [1] : []
+    content {
+      ignore_changes = var.ignored_lifecycle_changes
+    }
+  }
+  
 }
 
 #------------------------------------------------------------------------------

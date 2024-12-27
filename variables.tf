@@ -88,3 +88,9 @@ variable "deployment_maximum_percent" {
   description = "Maximum percent of containers at deploy time."
   default     = 200
 }
+
+variable "ignored_lifecycle_changes" {
+  type        = list(string)
+  description = "List of resource attributes to ignore changes for lifecycle management."
+  default     = []
+}
