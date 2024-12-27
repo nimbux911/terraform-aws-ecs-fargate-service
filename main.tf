@@ -34,11 +34,11 @@ resource "aws_ecs_service" "main" {
     }
   }
 
-  dynamic "lifecycle" {
-    for_each = var.ignored_lifecycle_changes != [] ? [1] : []
-    content {
-      ignore_changes = var.ignored_lifecycle_changes
-    }
+  lifecycle {
+    ignore_changes = flatten([
+      for item in var.ignored_lifecycle_changes : 
+      contains([for resource in item.resource_name : resource], "aws_ecs_service") ? item.attributes : []
+    ])
   }
   
 }

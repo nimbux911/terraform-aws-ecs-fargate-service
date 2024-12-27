@@ -90,7 +90,10 @@ variable "deployment_maximum_percent" {
 }
 
 variable "ignored_lifecycle_changes" {
-  type        = list(string)
-  description = "List of resource attributes to ignore changes for lifecycle management."
+  type = list(object({
+    resource_name = string
+    attributes    = list(string)
+  }))
+  description = "List of resources and their attributes to ignore changes for lifecycle management."
   default     = []
 }
